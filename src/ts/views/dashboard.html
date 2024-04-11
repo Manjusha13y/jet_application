@@ -1,0 +1,177 @@
+
+<style>
+  .oj-formlayout-max-cols-1{
+    max-width: 100%;
+  }
+</style>
+<div>
+  <oj-validation-group id="tracker" valid="{{groupValid}}">
+ <oj-form-layout id="myform1" aria-autocomplete="none" class="oj-formlayout-full-width">
+  <h1 text-align="center">Job Application</h1>
+<div class="oj-flex oj-sm-padding-2x-vertical cus_width">
+  <div class="oj-sm-12 oj-md-4 oj-lg-4 oj-flex-item oj-sm-padding-2x-horizontal">
+    <p class="heading">FIRSTNAME:</p>
+    <oj-input-text  class="size" id="first" value="{{firstname}}" required></oj-input-text>
+  </div>
+  <div class="oj-sm-12 oj-md-4 oj-lg-4 oj-flex-item oj-sm-padding-2x-horizontal">
+    <p class="heading">LASTNAME:</p>
+    <oj-input-text  class="size" id="last" value="{{lastname}}"></oj-input-text>
+  </div>
+  <div class="oj-sm-12 oj-md-4 oj-lg-4 oj-flex-item oj-sm-padding-2x-horizontal">
+    <p class="heading">AGE:</p>
+    <oj-c-input-number  id="age" value="{{age}}"  min="22" max="35" class="size"></oj-c-input-number>
+  </div>
+  <div class="oj-sm-12 oj-md-4 oj-lg-4 oj-flex-item oj-sm-padding-2x-horizontal">
+    <p class="heading">Gender:</p>
+    <oj-select-single  class="size" data=[[browsersDp]] id="singleoption" value="{{selectGender}}"></oj-select-single>
+  </div>
+  <div class="oj-sm-12 oj-md-4 oj-lg-4 oj-flex-item oj-sm-padding-2x-horizontal">
+    <p class="heading">EMAIL:</p>
+    <oj-input-text id="email"  value="{{email}}"  validators="[[emailPatternValidator]]" class="size" >
+      <!-- <span slot="help">Enter a valid email address</span> -->
+      <!-- <oj-validator validator="[[verifyEmail]]"></oj-validator>  -->
+    </oj-input-text>
+  </div>
+  <div class="oj-sm-12 oj-md-4 oj-lg-4 oj-flex-item oj-sm-padding-2x-horizontal">
+    <p class="heading">MOIBLE NUMBER:</p>
+    <oj-input-text  class="size" id="last" value="{{mobilenumber}}"></oj-input-text>
+  </div>
+  <div class="oj-sm-12 oj-md-4 oj-lg-4 oj-flex-item oj-sm-padding-2x-horizontal ">
+    <p class="heading">Course:</p>
+    <oj-c-select-multiple
+    class="size"
+    data="[[courses]]"
+    item-text="label"
+    value="{{selectVal}}"
+    label-hint="enabled"></oj-c-select-multiple>
+  </div>
+    <div class="oj-sm-12 oj-md-4 oj-lg-4 oj-flex-item oj-sm-padding-2x-horizontal"> 
+      <p class="heading">Stream:</p>
+      <oj-combobox-many class="size" id="combo" value='{{selectStream}}'>
+        <oj-option value="cse">CSE</oj-option>
+        <oj-option value="mech">MECH</oj-option>
+        <oj-option value="ece">ECE</oj-option>
+        <oj-option value="civil">CIVIL</oj-option>
+      </oj-combobox-many></div>
+    </oj-form-layout>
+    </oj-validation-group>
+
+    <div>
+      <oj-button id="edit" label="edit" data-bind="click:editForm">edit</oj-button>
+    </div>
+
+      <div class="oj-sm-12 oj-md-12 oj-lg-12 oj-flex-item oj-sm-padding-2x-horizontal ">
+        <oj-button class="size" id="button1" :label="submit" data-bind="click: submitForm ,label:submit"></oj-button>
+       
+          <!-- Messages -->
+          <oj-c-message-toast
+            data="[[messages]]"
+            on-oj-close="[[closeMessage]]"></oj-c-message-toast>
+       
+      </div>
+    </div>
+   
+    <!-- routing  -->
+    <div>
+      <oj-button id="routingButton" label="Go To users" on-oj-action="[[navigateToPage1]]"></oj-button>
+    </div>
+
+  
+</div> 
+ 
+   <!-- accordion  -->
+  <div id="accordionPage">
+    <oj-accordion id="a1" multiple expanded='[{"id":"c1"},{"id":"c2"}]'>
+      <oj-collapsible id="c1" expanded>
+         <h3 slot="header"> Header 1</h3>
+         <p>content1</p>
+      </oj-collapsible>
+      <oj-collapsible id="c2" expanded>
+          <div>
+            <oj-label>Colors</oj-label>
+                  <oj-radioset id="radiosetBasicDemoId" value="red" labelled-by="mainlabelid">
+                    <oj-option id="blueopt" value="blue">Blue</oj-option>
+                    <oj-option id="greenopt" value="green">Green</oj-option>
+                    <oj-option id="redopt" value="red">Red</oj-option>
+                  </oj-radioset>
+          </div>
+      </oj-collapsible>
+      <oj-collapsible id="c3">
+        <h3 slot="header">Header 3</h3>
+        <p>Content 3.</p>
+      <oj-collapsible id="c4">
+        <p>i am inner collapsible</p>
+      </oj-collapsible>
+      </oj-collapsible>
+    </oj-accordion>
+
+    <!-- <div>
+      <br />
+      <oj-button id="bb" on-oj-action="[[clearLogMsg]]">Clear log</oj-button>
+      <br />
+      <oj-label for="eventlog">Event Data:</oj-label>
+      <oj-text-area
+        id="eventlog"
+        class="demo-text-area"
+        value="{{logMsg}}"
+        rows="8"
+        readonly></oj-text-area>
+    </div> -->
+
+  </div>
+<!-- popup and modal -->
+  <div id="popup">
+    <oj-popup 
+    id="popup1"
+    auto-dismiss="none"
+    modality="modal"
+    position.my.horizontal="center"
+    position.my.vertical="center"
+    position.at.horizontal="center"
+    position.at.vertical="center"
+    position.of="window"
+    tail="none"
+    >
+    <div class="demo-popup-body">
+    <div class="demo-popup-header">
+      <oj-button id="cancelBtn" label="cancel" display="icons"  on-oj-action="[[cancelListener]]" class="oj-button-sm">
+        <span slot="startIcon" class="oj-ux-ico-close"></span>
+        Cancel
+      </oj-button>
+    </div>
+    <div class="demo-popup-content oj-sm-padding-2x">
+      <p1>Hii,Hello I am Modal.This is how i look.You can implement me using modality property by assigining modal value.</p1>
+    </div>
+    </div>
+</oj-popup>
+  <oj-button id="btnGo" on-oj-action="[[openListener]]"> Go</oj-button>
+  <div id="form-container" class="oj-sm-padding-4x-top">
+    <oj-form-layout direction="row" max-columns="1">
+    <oj-input-text
+     label="name"
+     value="{{name}}"
+    >
+    </oj-input-text>
+    <oj-input-text
+     label="address"
+     value="{{address}}"
+    >
+    </oj-input-text>
+    </oj-form-layout>
+    </div>
+  
+  </div>
+<!-- ! tooltip -->
+<div id="tooltip" data-oj-binding-provider="none">
+  <p> Key words in this paragraph are accentuated by a
+    <a
+    tabindex="0"
+    href="#"
+    data-title="Tooltip is common graphical user interface element. Tooltips 
+               is a hover box with information about the item being selected.">tooltip
+    </a> that is implemented using the
+    <a tabindex="0" href="#" data-title="The coolest of all JET components.">oj-popup</a>
+   . This tooltip is accessible via the keyboard and mouse.
+  </p>
+</div>
+

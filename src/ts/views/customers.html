@@ -1,0 +1,123 @@
+<!--
+ Copyright (c) 2014, 2024, Oracle and/or its affiliates.
+ Licensed under The Universal Permissive License (UPL), Version 1.0
+ as shown at https://oss.oracle.com/licenses/upl/
+ -->
+<div class="oj-hybrid-padding">
+  <oj-table data="[[names]]" id="table1" 
+  columns='[{"headerText": "Id", 
+  "field": "id",
+  "headerClassName": "oj-sm-only-hide",
+  "className": "oj-sm-only-hide",
+  "resizable": "enabled",
+  "id": "depId"},
+ {"headerText": "Name", 
+  "field": "name",
+  "resizable": "enabled",
+  "id": "depName"},
+ {"headerText": "Location", 
+  "field": "location",
+  "headerClassName": "oj-sm-only-hide",
+  "className": "oj-sm-only-hide",
+  "resizable": "enabled",
+  "id": "locId"},
+ {"headerText": "Mobile Number", 
+  "field": "mobilenumber",
+  "resizable": "enabled",
+  "id": "manId"},
+ {"headerText": "Email", 
+  "field": "emailid",
+  "headerClassName": "oj-md-down-hide",
+  "className": "oj-md-down-hide",
+  "resizable": "enabled",
+  "id": "empCount"}]'
+  >
+
+  </oj-table>
+</div>
+<div id="sampleDemo" class="demo-padding demo-container">
+  <div id="componentDemoContent" style="width: 1px; min-width: 100%;">
+            
+    <div id="train-container" class="oj-sm-margin-2x">
+      <h3 class="oj-helper-text-align-center">Linear train</h3>
+      <div class="next">
+        <oj-button
+                id="PreviousStep"
+                class="demo-default-train-step"
+                on-oj-action="[[previousStep]]"
+                data-bind="hidden:selectedStepValue() == 'stp1' ">
+                Back
+              </oj-button>
+      <oj-train
+        id="lineartrain"
+        class="oj-train-stretch oj-sm-margin-4x-horizontal"
+        on-selected-step-changed="[[update]]"
+        selected-step="{{selectedStepValue}}"
+        steps="[[stepArray]]"></oj-train>
+        <!-- <oj-bind-if test="[[selectedStepValue() !== 'stp3']]"> -->
+        <oj-button
+        id="NextStep"
+        class="demo-default-train-step"
+        on-oj-action="[[nextStep]]"
+        data-bind="hidden:selectedStepValue() == 'stp3'"
+        >
+        Next
+      </oj-button>
+    <!-- </oj-bind-if> -->
+      </div>
+      <div class="oj-sm-margin-4x-vertical">
+        <p class="oj-helper-text-align-center">
+          <oj-bind-text value="[['You are on ' + selectedStepLabel()]]"></oj-bind-text>
+        </p>
+      </div>
+      <oj-label label-id="grouplabelid">
+        <oj-bind-text value="[[selectedStepFormLabel()]]"></oj-bind-text>
+      </oj-label>
+      <oj-validation-group id="tracker" role="group" aria-labelledby="grouplabelid">
+        <oj-bind-if test="[[selectedStepValue() === 'stp1'|| selectedStepValue() === 'stp3']]">
+          <oj-form-layout id="fl1" readonly="[[isFormReadonly()]]">
+            <oj-input-text
+              required
+              id="firstfieldid"
+              value="{{name}}"
+              autocomplete="off"
+              label-hint="Name"
+              validators="[[[regExpValidator]]]"></oj-input-text>
+          </oj-form-layout>
+        </oj-bind-if>
+        <oj-bind-if test="[[selectedStepValue() === 'stp2'|| selectedStepValue() === 'stp3']]">
+          <oj-form-layout id="fl2" readonly="[[isFormReadonly()]]">
+            <oj-input-text
+              required
+              id="secondfieldid"
+              value="{{email}}"
+              autocomplete="off"
+              label-hint="Email"
+              validators="[[[emailRegExpValidator]]]"></oj-input-text>
+            <oj-input-text
+              required
+              id="thirdfieldid"
+              value="{{telephoneNumber}}"
+              autocomplete="off"
+              label-hint="Telephone Number"></oj-input-text>
+          </oj-form-layout>
+        </oj-bind-if>
+      </oj-validation-group>
+      <oj-bind-if test="[[selectedStepValue() === 'stp3']]">
+        <div class="oj-flex-bar oj-sm-margin-4x-vertical">
+          <oj-button
+            id="confirmBtn"
+            class="oj-flex-bar-end"
+            chroming="callToAction"
+            on-oj-action="[[confirm]]">
+            Confirm
+          </oj-button>
+        </div>
+      </oj-bind-if>
+    </div>
+
+    
+    
+    
+  </div>
+</div>

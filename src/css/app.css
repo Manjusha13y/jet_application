@@ -1,0 +1,130 @@
+/*
+    Document   : override
+    Created on : <date>
+    Author     : <author>
+    Description:
+        This is where any of your application specific styles should be included
+*/
+
+.send-off-screen {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.demo-oracle-icon {
+  width:137px;
+  height:18px
+}
+
+.demo-oracle-icon:before {
+  content:url("images/oracle_logo.svg")
+}
+
+html:not([dir="rtl"]) .demo-oracle-icon {
+  padding-right:4px
+}
+
+html[dir="rtl"] .demo-oracle-icon {
+  padding-left:4px
+}
+
+.demo-oracle-icon:before {
+  display:inline
+}
+
+.demo-appheader-avatar {
+  width:24px;
+  height:24px
+}
+
+.demo-appheader-avatar:before {
+  content:url("images/avatar_24px.png")
+}
+@media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
+  .demo-appheader-avatar:before {
+      content:url("images/avatar_24px_2x.png");
+      -webkit-transform:translate(-25%, -25%) scale(0.5);
+      transform:translate(-25%, -25%) scale(0.5)
+  }
+}
+.cus_width{
+width:100%;
+}
+#first{
+  width:400px;
+}
+.heading{
+  margin-top: 0px;
+}
+
+#card{
+  display:flex;
+  box-shadow: 0 0 8px rgb(184, 167, 167);
+  /* margin:40px;
+  width:400px; */
+}
+#card-item{
+   /* display:inline;  */
+  flex: 1; /* Allow items to grow and take up equal width */
+  padding: 10px; /* Add padding around items */
+
+  
+}
+.image{
+  height:200px;
+  width:200px;
+  border-radius:20px;
+  margin:30px;
+  margin-left: 60px;
+  display:block;
+}
+.text{
+  margin:30px;
+  display:block;
+  margin-left: 60px;
+}
+/* .oj-listview-element, .oj-listview-group{
+  /* display: flex;
+  flex-wrap: wrap; */
+ */
+.list-item{
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+}
+.next{
+  display:flex;
+}
+.oj-train-stretch{
+  width:80%;
+}
+.demo-default-train-step{
+  width:20%;
+}
+.size{
+  height:100px;
+  width:100%;
+}
+#first{
+  height:100px;
+  width:100%;
+}
+.oj-button{
+height:50px;
+width:100px;
+}
+ul{
+  list-style-type: none;
+}
+.demo-popup-body {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.demo-popup-header {
+  align-self: flex-end;
+}

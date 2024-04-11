@@ -1,0 +1,75 @@
+<!--
+ Copyright (c) 2014, 2024, Oracle and/or its affiliates.
+ Licensed under The Universal Permissive License (UPL), Version 1.0
+ as shown at https://oss.oracle.com/licenses/upl/
+ -->
+ <div>
+  <oj-bind-if>
+    <div class="oj-flex oj-sm-justify-content-flex-end">
+      <oj-buttonset-one
+        display="icons"
+        value="{{activeLayout}}"
+        chroming="borderless"
+        class="oj-flex-item oj-sm-flex-initial oj-buttonset-width-auto"
+        aria-label="Choose layout view.">
+        <oj-bind-for-each data="[[layoutViewRadios]]">
+          <template>
+            <oj-option value="[[$current.data.id]]" :id="[[$current.data.id]]">
+              <span slot="startIcon" :class="[[$current.data.icon]]"></span>
+              <span>
+                <oj-bind-text value="[[$current.data.id]]"></oj-bind-text>
+              </span>
+            </oj-option>
+          </template>
+        </oj-bind-for-each>
+      </oj-buttonset-one>
+    </div>
+  </oj-bind-if>
+  <div class="demo-card-container">
+    <oj-list-view
+      id="listview"
+      aria-label="list with card layout"
+      data="[[dataProvider]]"
+      display="[[activeLayout]]"
+      :class="[[{'oj-listview-item-padding-off': 'true','oj-sm-padding-2x-bottom': activeLayout() === 'card' || false }]]">
+      <template slot="itemTemplate" data-oj-as="item">
+        <!-- template for items -->
+        <oj-bind-if test="[[activeLayout.peek() == 'list']]">
+          <oj-list-item-layout>
+            <span class="oj-typography-body-md">
+              <oj-bind-text value="[[item.item.data.name]]"></oj-bind-text>
+            </span>
+            <oj-avatar slot="leading" size="xs" src="[[item.item.data.image]]"></oj-avatar>
+            <span slot="secondary" class="oj-typography-body-sm oj-text-color-secondary">
+              <oj-bind-text value="[[item.item.data.title]]"></oj-bind-text>
+            </span>
+          </oj-list-item-layout> 
+        </oj-bind-if>
+        <oj-bind-if test="[[activeLayout.peek() == 'card']]">
+          <div class="oj-flex">
+            <!-- <ul class="oj-flex-item"> -->
+          <li class="oj-flex-item oj-sm-12 oj-md-4 oj-lg-3">
+            <oj-action-card > <!-- Ensure the action card takes full width -->
+              <div>
+                <img class="image" :src="[[item.data.image]]"/>
+                <span class="oj-text-color-primary oj-typography-body-md text">
+                  <oj-bind-text value="[[item.data.name]]"></oj-bind-text>
+                </span>
+                <span slot="secondary" class="oj-text-color-secondary oj-typography-body-sm text">
+                  <oj-bind-text value="[[item.data.title]]"></oj-bind-text>
+                </span>
+              </div>
+            </oj-action-card>
+          </li>
+          <!-- </ul> -->
+        </div>
+        </oj-bind-if>
+      </template>
+    </oj-list-view>
+  </div>
+</div>
+
+
+
+</div>
+</div>

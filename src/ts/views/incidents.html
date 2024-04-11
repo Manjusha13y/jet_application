@@ -1,0 +1,38 @@
+<!--
+ Copyright (c) 2014, 2024, Oracle and/or its affiliates.
+ Licensed under The Universal Permissive License (UPL), Version 1.0
+ as shown at https://oss.oracle.com/licenses/upl/
+ -->
+  <!-- File picker component -->
+  <!-- <oj-file-picker id="filePicker" selection-mode="multiple"  on-oj-select="handleFileSelection">
+  </oj-file-picker> -->
+  <div>
+  <oj-file-picker
+  accept="[[acceptArr]]"
+  selection-mode="[[multipleStr]]"
+  on-oj-select="[[selectListener]]"
+  disabled="[[isDisabled]]"
+  on-oj-invalid-select="[[invalidListener]]"></oj-file-picker>
+  <!-- Display selected file names -->
+  <div>
+      <h2>Selected Files:</h2>
+      <ul data-bind="foreach: fileNames">
+          <li data-bind="text: $data"></li>
+      </ul>
+  </div>
+  </div>
+  <!-- <div role="navigation">
+    <oj-navigation-list  
+    data="[[navDataProvider]]"
+    edge="top"
+    selection="{{router.stateId}}"
+    >
+    <template slot="itemTemplate" data-oj-as="item">
+        <a href="#">
+          <span :class="[[item.detail.iconClass]]"></span>
+          <oj-bind-text value="[[item.detail.name]]"></oj-bind-text>
+        </a>
+      </template>
+
+    </oj-navigation-list>
+  </div> -->
